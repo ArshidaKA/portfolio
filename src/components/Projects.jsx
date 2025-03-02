@@ -7,9 +7,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 const projects = [
-  { id: 1, name: "E-Commerce Website", img: "public/Screenshot (29).png", link: "#" },
-  { id: 2, name: "E-Commerce Website", img: "public/Screenshot (35).png", link: "#" },
-  { id: 3, name: "Admin Dashboard", img: "public/Screenshot (34).png", link: "#" },
+  { id: 1, name: "E-Commerce Website", img: "/ecommerce1.png", link: "#" },
+  { id: 2, name: "E-Commerce Website", img: "/ecommerce2.png", link: "#" },
+  { id: 3, name: "Admin Dashboard", img: "/adminDashboard.png", link: "#" },
 ];
 
 const Projects = () => {

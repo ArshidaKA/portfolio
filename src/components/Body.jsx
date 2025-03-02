@@ -11,7 +11,7 @@ const Body = () => {
         transition={{ duration: 1, delay: 1 }}
         className="relative flex justify-center items-center mt-5 sm:mt-[55px] sm:mr-[100px]"
       >
-        <div className="w-[250px] h-[250px] sm:w-[390px] sm:h-[390px] rounded-full flex justify-center items-center relative overflow-hidden shadow-lg">
+        <div className="w-[200px] h-[200px] sm:w-[390px] sm:h-[390px] rounded-full flex justify-center items-center relative overflow-hidden shadow-lg">
           <motion.img 
             src="/arshi.jpg" 
             alt="Profile" 
