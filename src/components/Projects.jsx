@@ -22,7 +22,7 @@ const Projects = () => {
       viewport={{ once: true }}
     >
       <h1 className="text-5xl font-sans font-semibold text-center">
-        Featured <span className="text-[#f5d061]">Projects</span>
+        Featured <span className="text-[#61dff5]">Projects</span>
       </h1>
 
       <p className="text-gray-300 text-lg text-center mt-7">
@@ -54,11 +54,11 @@ const Projects = () => {
                 alt={project.name}
                 className="w-full h-full object-cover transition-all duration-500 transform hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-xl font-semibold text-[#f5d061] opacity-0 hover:opacity-100 transition-all duration-500">
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-xl font-semibold text-[#61dff5] opacity-0 hover:opacity-100 transition-all duration-500">
                 <p>{project.name}</p>
                 <a
                   href={project.link}
-                  className="mt-4 px-5 py-2 bg-[#f5d061] text-black rounded-full text-sm font-bold transition-all duration-300 hover:bg-[#e0b851]"
+                  className="mt-4 px-5 py-2 bg-[#61dff5] text-black rounded-full text-sm font-bold transition-all duration-300 hover:bg-[#5ac9e6]"
                 >
                   View Project
                 </a>

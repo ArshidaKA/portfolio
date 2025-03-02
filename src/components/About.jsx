@@ -1,91 +1,78 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import { Pagination, Autoplay } from "swiper/modules";
-import Page1 from "./about/page1";
-import Page3 from "./about/Page3";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-const About = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const swiperRef = useRef(null);
+function Page1() {
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  // Function to stop autoplay on click
-  const handlePause = () => {
-    setIsPaused(true);
-    swiperRef.current?.swiper?.autoplay.stop();
-  };
+    return (
+        <div className='w-[90%] mx-auto mt-10'>
+            <motion.div 
+                ref={ref}
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className='bg-[#38393a] w-full h-auto sm:h-[90vh] font-sans rounded-3xl px-9 flex flex-col sm:flex-row items-center justify-between py-10 sm:py-0'
+            >
+                {/* Left Side - Text Content */}
+                <div className="w-full sm:w-1/2 text-center sm:text-left">
+                    <motion.h1 
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className='text-5xl sm:text-6xl font-bold font-sans text-[#61dff5]'
+                    >
+                        about.
+                    </motion.h1>
 
-  // Function to resume autoplay when scrolling
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isPaused) {
-        setIsPaused(false);
-        swiperRef.current?.swiper?.autoplay.start();
-      }
-    };
+                    <motion.p 
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className='text-lg sm:text-2xl font-poppins text-gray-400 mt-4 sm:mt-8'
+                    >
+                        I'm a passionate <span className='text-white'>Fullstack Developer</span> who loves blending creativity with logic to build seamless digital experiences.
+                    </motion.p>
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isPaused]);
+                    <motion.h3
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className='text-base sm:text-xl font-poppins text-gray-400 mt-4 sm:mt-8'
+                    >
+                        I specialize in both front-end and back-end development, building responsive interfaces using React, TailwindCSS, and JavaScript, while ensuring scalable back-end solutions with Node.js, Express.js, and MongoDB.
+                    </motion.h3>
 
-  return (
-    <div className="relative bg-[#38393a] w-[90%] h-[90vh] mx-auto font-sans rounded-3xl mt-10 flex items-center justify-center">
-      {/* Swiper Component */}
-      <Swiper
-  ref={swiperRef}
-  modules={[Pagination, Autoplay]}
-  pagination={{
-    clickable: true, // Ensure pagination bullets are clickable
-  }}
-  direction="vertical"
-  spaceBetween={30}
-  slidesPerView={1}
-  loop={true}
-  autoplay={!isPaused ? { delay: 2000, disableOnInteraction: false } : false}
-  className="w-full h-full rounded-lg"
-  onClick={handlePause} // Pause on click
->
-        <SwiperSlide>
-          <Page1 />
-        </SwiperSlide>
-       
-        <SwiperSlide>
-          <Page3 />
-        </SwiperSlide>
-      </Swiper>
+                    {/* Social Media Links */}
+                    <div className="flex justify-center sm:justify-start text-2xl space-x-4 mt-6 sm:mt-12">
+                        <a href="https://www.linkedin.com/in/arshida-k-a-5ba98a314/" target="_blank" rel="noopener noreferrer" className="text-[#61dff5] hover:text-gray-600 transition">
+                            <FaLinkedin />
+                        </a>
+                        <a href="https://www.instagram.com/arshee.eh?igsh=NXY4Znh3djhydGsz&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#61dff5] transition">
+                            <FaInstagram />
+                        </a>
+                        <a href="https://wa.me/9645299269" target="_blank" rel="noopener noreferrer" className="text-[#61dff5] hover:text-gray-600 transition">
+                            <FaGithub />
+                        </a>
+                    </div>
+                </div>
 
-      {/* Custom Pagination (Vertical Dots) */}
-      <div className="custom-swiper-pagination absolute left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-2"></div>
+                {/* Right Side - Image (Appears First on Small Screens) */}
+                <motion.div 
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="w-full sm:w-1/2 flex justify-center mt-6 sm:mt-0"
+                >
+                    <img
+                        src='https://www.rhdigital.co.uk/wp-content/uploads/web-design-768x694.png'
+                        className='w-[250px] sm:w-[400px]'
+                    />
+                </motion.div>
+            </motion.div>
+        </div>
+    );
+}
 
-      {/* Swiper Pagination Custom Styling */}
-      <style jsx global>{`
-        .swiper-pagination-bullets {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          left: 20px !important;
-          top: 50% !important;
-          transform: translateY(-50%);
-        }
-
-        .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
-          background-color: #f5d061 !important;
-          opacity: 0.6;
-          transition: all 0.3s ease;
-        }
-
-        .swiper-pagination-bullet-active {
-          width: 18px;
-          height: 18px;
-          opacity: 1;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default About;
+export default Page1;

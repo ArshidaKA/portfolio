@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaDatabase, FaJsSquare } from "react-icons/fa";
-import { SiNextdotjs, SiMongodb, SiMysql, SiRedux, SiFirebase, SiGraphql } from "react-icons/si";
+import { SiNextdotjs, SiMongodb, SiRedux, SiFirebase } from "react-icons/si";
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState("frontend");
@@ -20,8 +20,6 @@ const Skills = () => {
     { name: "Node.js", icon: <FaNodeJs />, percentage: 85 },
     { name: "Express.js", icon: <FaNodeJs />, percentage: 80 },
     { name: "MongoDB", icon: <SiMongodb />, percentage: 75 },
-    // { name: "MySQL", icon: <SiMysql />, percentage: 70 },
-    // { name: "GraphQL", icon: <SiGraphql />, percentage: 65 },
     { name: "Firebase", icon: <SiFirebase />, percentage: 80 },
   ];
 
@@ -29,107 +27,77 @@ const Skills = () => {
 
   return (
     <motion.div 
-      className="bg-[#38393a] w-[90%] h-auto mx-auto rounded-3xl mt-10 p-10 text-white"
+      className="bg-[#1e1f21] w-[90%] h-auto mx-auto rounded-3xl mt-10 p-6 md:p-10 text-white text-center"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
     >
-      {/* Heading */}
-      <h1 className="text-5xl font-semibold font-sans">
-        My <span className="text-[#f5d061]">Skills</span>
+      <h1 className="text-4xl md:text-5xl font-semibold mt-6 md:mt-9 font-sans">
+        My <span className="text-[#61dff5]">Skills</span>
       </h1>
-      <p className="text-gray-400 text-xl mt-4">
+      <p className="text-gray-400 text-lg md:text-xl mt-6 md:mt-8">
         Take a peek into my toolkit that crafts my web development journey.
       </p>
 
-      {/* Buttons */}
-      <div className="flex justify-center mt-8 space-x-6">
-        <button
-          className={`text-lg px-6 py-2 rounded-full transition-all duration-300 ${
-            activeTab === "frontend"
-              ? "bg-[#f5d061] text-black font-bold shadow-lg"
-              : "bg-gray-700 text-gray-300"
-          }`}
-          onClick={() => setActiveTab("frontend")}
-        >
-          Front-End
-        </button>
-
-        <button
-          className={`text-lg px-6 py-2 rounded-full transition-all duration-300 ${
-            activeTab === "backend"
-              ? "bg-[#f5d061] text-black font-bold shadow-lg"
-              : "bg-gray-700 text-gray-300"
-          }`}
-          onClick={() => setActiveTab("backend")}
-        >
-          Back-End
-        </button>
+      <div className="flex justify-center mt-10 md:mt-12 space-x-4 md:space-x-6">
+        {["frontend", "backend"].map((tab) => (
+          <motion.button
+            key={tab}
+            className={`text-sm md:text-lg px-4 md:px-6 py-2 rounded-full transition-all duration-300 ${
+              activeTab === tab
+                ? "bg-[#61dff5] text-black font-bold shadow-lg"
+                : "bg-gray-900 border-[#61dff5] text-[#61dff5]"
+            }`}
+            onClick={() => setActiveTab(tab)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {tab === "frontend" ? "Front-End" : "Back-End"}
+          </motion.button>
+        ))}
       </div>
 
-      {/* Skills Content with Progress Circles */}
       <motion.div 
         key={activeTab} 
-        className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10"
+        className="flex flex-wrap justify-center gap-6 md:gap-8 mt-10 h-auto md:h-72"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         {skills.map((skill, index) => (
           <motion.div 
             key={index} 
-            className="flex flex-col items-center"
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="flex flex-col items-center mb-10 md:mb-32 w-20 md:w-auto"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="relative w-32 h-32">
-              {/* Background Circle */}
-              <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" strokeWidth="5" stroke="#444" fill="none" />
-              </svg>
-              {/* Progress Circle */}
-              <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-                <motion.circle
-                  cx="50"
-                  cy="50"
-                  r="40"
-                  strokeWidth="2" // Reduced thickness
-                  stroke="#f5d061"
-                  fill="none"
-                  strokeDasharray="251.2"
-                  strokeDashoffset={251.2 - (skill.percentage / 100) * 251.2}
-                  initial={{ strokeDashoffset: 251.2 }}
-                  whileInView={{ strokeDashoffset: 251.2 - (skill.percentage / 100) * 251.2 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                />
-              </svg>
-              {/* Percentage Text */}
-              <div className="absolute inset-0 flex items-center justify-center text-xl font-bold">
-                {skill.percentage}%
-              </div>
-            </div>
-            {/* Skill Icon & Name */}
-            <div className="flex items-center mt-2 text-lg font-medium">
-              <span className="text-3xl mr-2 text-gray-400">{skill.icon}</span>
-              {skill.name}
-            </div>
+            
+
+            <motion.div 
+              className="text-5xl md:text-6xl mt-10 text-[#61dff5]"
+              whileHover={{ y: -10, scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+            >
+              {skill.icon}
+            </motion.div>
+            <span className="text-base md:text-lg font-medium mt-1">{skill.name}</span>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Dots Indicator */}
-      <div className="flex justify-center mt-15 space-x-4">
-        <div
-          className={`w-2 h-2 rounded-full transition-all ${
-            activeTab === "frontend" ? "bg-[#f5d061] w-6" : "bg-gray-500"
-          }`}
-        ></div>
-        <div
-          className={`w-2 h-2 rounded-full transition-all ${
-            activeTab === "backend" ? "bg-[#f5d061] w-6" : "bg-gray-500"
-          }`}
-        ></div>
+      <div className="flex justify-center mb-16 md:mb-24 space-x-3 md:space-x-4">
+        {["frontend", "backend"].map((tab) => (
+          <motion.div
+            key={tab}
+            className={`w-2 h-2 md:w-2 md:h-2 mb-8 rounded-full transition-all ${
+              activeTab === tab ? "bg-[#61dff5] w-5 md:w-6" : "bg-gray-500"
+            }`}
+            whileHover={{ scale: 1.3 }}
+          ></motion.div>
+        ))}
       </div>
     </motion.div>
   );
