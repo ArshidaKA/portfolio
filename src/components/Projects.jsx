@@ -7,9 +7,13 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
 const projects = [
-  { id: 1, name: "E-Commerce Website", img: "/ecommerce1.png", link: "#" },
-  { id: 2, name: "E-Commerce Website", img: "/ecommerce2.png", link: "#" },
-  { id: 3, name: "Admin Dashboard", img: "/adminDashboard.png", link: "#" },
+  { id: 1, name: "E-commerce platfom", img: "/shoeapp.png", },
+  { id: 2, name: "clothing platform", img: "/ecommerce2.png",  },
+  { id: 3, name: "meme sharing platform", img: "/memeverse.png", },
+  { id: 4, name: "coffie website", img: "/coffie-web.png", },
+  { id: 5, name: "E-Commerce Website", img: "/ecommerce1.png", },
+
+
 ];
 
 const Projects = () => {
@@ -56,12 +60,7 @@ const Projects = () => {
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-xl font-semibold text-[#61dff5] opacity-0 hover:opacity-100 transition-all duration-500">
                 <p>{project.name}</p>
-                <a
-                  href={project.link}
-                  className="mt-4 px-5 py-2 bg-[#61dff5] text-black rounded-full text-sm font-bold transition-all duration-300 hover:bg-[#5ac9e6]"
-                >
-                  View Project
-                </a>
+                
               </div>
             </motion.div>
           </SwiperSlide>

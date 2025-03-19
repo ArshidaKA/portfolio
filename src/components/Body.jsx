@@ -18,7 +18,7 @@ const Body = () => {
             className="w-full h-full object-cover rounded-full" 
             whileHover={{ scale: 1.1 }} 
             transition={{ duration: 0.3 }}
-          />
+          />  
         </div>
 
         {/* Floating Dots and Shapes */}
@@ -54,8 +54,8 @@ const Body = () => {
         </p>
 
         <a
-          href="/Arshida-CV.pdf"
-          download="Arshida-CV.pdf"
+          href="/ARSHIDA-MERN-CV (2).pdf"
+          download="ARSHIDA-MERN-CV (2).pdf"
           className="px-6 py-2 bg-[#61dff5] mt-4 sm:mt-8 text-black font-semibold rounded-full w-[180px] h-[40px] shadow-md hover:border-[#61dff5] hover:text-[#61dff5] hover:bg-[#38393a] hover:border-2 transition-all duration-300"
         >
           Download CV

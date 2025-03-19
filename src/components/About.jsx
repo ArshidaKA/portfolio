@@ -52,7 +52,7 @@ function Page1() {
                         <a href="https://www.instagram.com/arshee.eh?igsh=NXY4Znh3djhydGsz&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#61dff5] transition">
                             <FaInstagram />
                         </a>
-                        <a href="https://wa.me/9645299269" target="_blank" rel="noopener noreferrer" className="text-[#61dff5] hover:text-gray-600 transition">
+                        <a href="https://github.com/ArshidaKA" target="_blank" rel="noopener noreferrer" className="text-[#61dff5] hover:text-gray-600 transition">
                             <FaGithub />
                         </a>
                     </div>
